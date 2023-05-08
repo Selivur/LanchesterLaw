@@ -1,0 +1,41 @@
+﻿<Window x:Class="LanchesterLaw.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LanchesterLaw"
+        xmlns:views="clr-namespace:LanchesterLaw.Views"
+        xmlns:vms="clr-namespace:LanchesterLaw.ViewModels"
+        mc:Ignorable="d"
+        Title="AnalyticApp" Height="500" Width="1000" Background="{x:Null}" WindowStartupLocation="CenterScreen">
+    <StackPanel Background="AliceBlue">
+        <StackPanel Orientation="Horizontal" Background="Khaki">
+            <Label Margin="10"/>
+            <Button Margin="10" Padding="15, 2" FontSize="16" Content="Звичайний" BorderThickness="0" Background="DarkKhaki" Command="{Binding OnLinearCommand}"/>
+            <Button Margin="10" Padding="15, 2" FontSize="16" Content="Партизанська війна" BorderThickness="0" Background="DarkKhaki" Command="{Binding OnSquareCommand}"/>
+            <Button Margin="10" Padding="15, 2" FontSize="16" Content="Змішана" BorderThickness="0" Background="DarkKhaki" Command="{Binding OnUniversalCommand}"/>
+
+            <!--<Label MinWidth="40" Width="800" HorizontalContentAlignment="Right">
+                <Button Margin="10" Padding="15, 2" FontSize="16" Content="Page 3" BorderThickness="0" Background="DarkKhaki" />
+            </Label>-->
+
+        </StackPanel>
+
+        <Grid>
+            <Grid.Resources>
+                <DataTemplate DataType="{x:Type vms:LinearLanchesterLawViewModel}">
+                    <views:LinearLanchesterLawView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vms:SquareLanchesterLawViewModel}">
+                    <views:SquareLanchesterLawView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vms:UniversalLanchesterLawViewModel}">
+                    <views:UniversalLanchesterLawView/>
+                </DataTemplate>
+            </Grid.Resources>
+            <ContentControl Content="{Binding CurrentViewModel}"/>
+        </Grid>
+
+    </StackPanel>
+
+</Window>
