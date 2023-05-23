@@ -109,16 +109,18 @@ namespace LanchesterLaw.ViewModels
                         new LineSeries
                         {
                             Title = "Оборона",
-                            Values = new ChartValues<int>(Lanchester.AllyCount)
+                            Values = new ChartValues<int>(Lanchester.AllyCount),
+                            PointGeometry = null
                         },
                         new LineSeries
                         {
                             Title = "Атака",
-                            Values = new ChartValues<int> (Lanchester.EnemyCount)
+                            Values = new ChartValues<int> (Lanchester.EnemyCount),
+                            PointGeometry = null
                         },
                     };
                     ///
-                    MessageBox.Show(_fortificationFactor.ToString()+_landscapeFactor.ToString() +_weatherFactor.ToString());
+                    //MessageBox.Show(_fortificationFactor.ToString()+_landscapeFactor.ToString() +_weatherFactor.ToString());
                 });
             }
         }
