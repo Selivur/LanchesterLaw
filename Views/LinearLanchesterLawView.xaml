@@ -32,7 +32,15 @@
             <TextBlock Margin="5" FontWeight="Bold" HorizontalAlignment="Center" FontSize="16" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2">Сторона оборони</TextBlock>
             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Grid.Column="0" Grid.Row="3">Кількість бойових одиниць:</TextBlock>
             <TextBox VerticalAlignment="Center" Margin="5" Padding="5" Grid.Column="1" Grid.Row="3"  Text="{Binding AllyCount, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Grid.Column="0" Grid.Row="4">Фортифікаційний фактор:</TextBlock>
+
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Grid.Column="0" Grid.Row="4" Text="Фортифікаційний фактор:">
+                <TextBlock.ToolTip>
+                    <ToolTip>
+                        5 - Ідеально укріплена лінія оборони, 9 - нариті окопи, 1 - без лінії оборони
+                    </ToolTip>
+                </TextBlock.ToolTip>
+            </TextBlock>
+            
             <Grid Grid.Column="1" Grid.Row="4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.8*"></ColumnDefinition>
@@ -84,6 +92,6 @@
                 </lvc:CartesianChart.AxisX>
             </lvc:CartesianChart>
         </Grid>
-        <Button Content="Calculate" HorizontalAlignment="Right" Command="{Binding CalculateCommand}" Margin="20" Padding="5"/>
+        <Button Content="Розрахувати" HorizontalAlignment="Right" Command="{Binding CalculateCommand}" Margin="20" Padding="5"/>
     </StackPanel>
 </UserControl>
