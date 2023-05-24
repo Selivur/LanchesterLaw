@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LanchesterLaw.Views"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="1000">
     <StackPanel>
@@ -23,6 +24,31 @@
                 <ColumnDefinition Width="0.2*"></ColumnDefinition>
                 <ColumnDefinition Width="0.6*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
+            <TextBlock Margin="5" FontWeight="Bold" HorizontalAlignment="Center" FontSize="16" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">Партизани:</TextBlock>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Grid.Column="0" Grid.Row="1">Кількість бойових одиниць:</TextBlock>
+            <TextBox VerticalAlignment="Center" Margin="5" Padding="5" Grid.Column="1" Grid.Row="1" Text="{Binding AllyCount, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Grid.Column="0" Grid.Row="2">Площа бойової одиниці:</TextBlock>
+            <TextBox VerticalAlignment="Center" Margin="5" Padding="5" Grid.Column="1" Grid.Row="2" Text="{Binding AllyUnitSquare, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Grid.Column="0" Grid.Row="3">Площа території:</TextBlock>
+            <TextBox VerticalAlignment="Center" Margin="5" Padding="5" Grid.Column="1" Grid.Row="3" Text="{Binding AllySquare, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Grid.Column="0" Grid.Row="4">Потужність бойової одиниці:</TextBlock>
+            <TextBox VerticalAlignment="Center" Margin="5" Padding="5" Grid.Column="1" Grid.Row="4" Text="{Binding AllyUnitPower, UpdateSourceTrigger=PropertyChanged}" />
+            <!---->
+            <TextBlock Margin="5" FontWeight="Bold" HorizontalAlignment="Center" FontSize="16" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2">Регулярні сили</TextBlock>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Grid.Column="0" Grid.Row="6">Кількість бойових одиниць:</TextBlock>
+            <TextBox VerticalAlignment="Center" Margin="5" Padding="5" Grid.Column="1" Grid.Row="6" Text="{Binding EnemyCount, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Grid.Column="0" Grid.Row="7">Потужність бойової одиниці:</TextBlock>
+            <TextBox VerticalAlignment="Center" Margin="5" Padding="5" Grid.Column="1" Grid.Row="7" Text="{Binding EnemyUnitPower, UpdateSourceTrigger=PropertyChanged}" />
+            <!---->
+            <lvc:CartesianChart Series="{Binding SeriesCollection, UpdateSourceTrigger=PropertyChanged}" LegendLocation="Right"  Grid.Column="2" Grid.RowSpan="8" Grid.Row="0">
+                <lvc:CartesianChart.AxisY>
+                    <lvc:Axis Title="Кількість бойових одиниць"></lvc:Axis>
+                </lvc:CartesianChart.AxisY>
+                <lvc:CartesianChart.AxisX>
+                    <lvc:Axis Title="Дні"></lvc:Axis>
+                </lvc:CartesianChart.AxisX>
+            </lvc:CartesianChart>
         </Grid>
+        <Button Content="Розрахувати" HorizontalAlignment="Right" Command="{Binding CalculateCommand}" Margin="20" Padding="5"/>
     </StackPanel>
 </UserControl>
